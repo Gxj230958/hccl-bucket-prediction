@@ -1,0 +1,24 @@
+{
+  "complete_training_matrix": [
+    {
+      "world_size": 2,
+      "independent_training_runs": 18,
+      "rank_files": 36,
+      "measured_rank_steps": 216
+    },
+    {
+      "world_size": 4,
+      "independent_training_runs": 15,
+      "rank_files": 60,
+      "measured_rank_steps": 360
+    },
+    {
+      "world_size": 8,
+      "independent_training_runs": 15,
+      "rank_files": 120,
+      "measured_rank_steps": 720
+    }
+  ],
+  "finite_loss_and_time": true,
+  "exact_bucket_layouts": true
+}

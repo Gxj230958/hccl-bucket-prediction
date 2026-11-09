@@ -1,0 +1,22 @@
+[
+  {
+    "source": "minlan_yu/results/qwen06_profile_1mb/profiler/qwen36-tab--1a52725a315c-vo67kuu77p_2273990_20261102112701328_ascend_pt/ASCEND_PROFILER_OUTPUT/trace_view.json",
+    "operator_count": 33768,
+    "allreduce_count": 594,
+    "compute_busy_ms": 314.35975,
+    "allreduce_busy_ms": 254.239,
+    "compute_allreduce_overlap_ms": 114.1895,
+    "allreduce_without_compute_ms": 140.0495,
+    "dependency_scope": "Per-stream order and explicit profiler flows; gradient-to-collective dependencies are recorded by collect.py."
+  },
+  {
+    "source": "minlan_yu/results/qwen06_profile_1mb/profiler/qwen36-tab--1a52725a315c-vo67kuu77p_2273991_20261102112701329_ascend_pt/ASCEND_PROFILER_OUTPUT/trace_view.json",
+    "operator_count": 33764,
+    "allreduce_count": 594,
+    "compute_busy_ms": 311.68375,
+    "allreduce_busy_ms": 307.99825,
+    "compute_allreduce_overlap_ms": 140.45325,
+    "allreduce_without_compute_ms": 167.545,
+    "dependency_scope": "Per-stream order and explicit profiler flows; gradient-to-collective dependencies are recorded by collect.py."
+  }
+]

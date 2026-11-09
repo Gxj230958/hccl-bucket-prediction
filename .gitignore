@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.log
+*.pyc
+results/profiler/
+results/**/profiler/
+results/**/trace_analysis_rank*.json

@@ -1,0 +1,10 @@
+{
+  "repository": "https://modelscope.cn/models/Qwen/Qwen3-0.6B",
+  "files": [
+    {
+      "Path": "config.json",
+      "Revision": "0ce186d90797c4c5cfefb0d3695517b37d02dd3a",
+      "Size": 726
+    }
+  ]
+}

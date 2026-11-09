@@ -1,0 +1,101 @@
+{
+  "world_size": 2,
+  "rows": [
+    {
+      "bucket_mb": 1.0,
+      "measured_ms": 132.0227487012744,
+      "independent_runs_ms": [
+        137.68578553572297,
+        132.0227487012744,
+        131.60297460854053
+      ],
+      "min_ms": 131.60297460854053,
+      "max_ms": 137.68578553572297,
+      "predicted_ms": 154.48807608153305,
+      "additive_ms": 201.03170668150858,
+      "relative_error": 0.17016254850965545,
+      "additive_relative_error": 0.5227050539326338
+    },
+    {
+      "bucket_mb": 4.0,
+      "measured_ms": 135.67718397825956,
+      "independent_runs_ms": [
+        136.7573612369597,
+        133.29976191744208,
+        135.67718397825956
+      ],
+      "min_ms": 133.29976191744208,
+      "max_ms": 136.7573612369597,
+      "predicted_ms": 149.5184753752912,
+      "additive_ms": 196.06210597526677,
+      "relative_error": 0.1020163522796103,
+      "additive_relative_error": 0.44506320242232533
+    },
+    {
+      "bucket_mb": 16.0,
+      "measured_ms": 133.43364279717207,
+      "independent_runs_ms": [
+        133.06631008163095,
+        135.2521339431405,
+        133.43364279717207
+      ],
+      "min_ms": 133.06631008163095,
+      "max_ms": 135.2521339431405,
+      "predicted_ms": 130.2237995166576,
+      "additive_ms": 176.40996600512398,
+      "relative_error": -0.02405572697579452,
+      "additive_relative_error": 0.32208011643119683
+    },
+    {
+      "bucket_mb": 25.0,
+      "measured_ms": 135.51799301058054,
+      "independent_runs_ms": [
+        135.51799301058054,
+        136.0937152057886,
+        133.77422746270895
+      ],
+      "min_ms": 133.77422746270895,
+      "max_ms": 136.0937152057886,
+      "predicted_ms": 127.64487609092127,
+      "additive_ms": 173.18006667319668,
+      "relative_error": -0.05809646929352456,
+      "additive_relative_error": 0.2779119792578073
+    },
+    {
+      "bucket_mb": 64.0,
+      "measured_ms": 136.24457409605384,
+      "independent_runs_ms": [
+        136.24457409605384,
+        136.9096552953124,
+        135.92649810016155
+      ],
+      "min_ms": 135.92649810016155,
+      "max_ms": 136.9096552953124,
+      "predicted_ms": 126.90261557227521,
+      "additive_ms": 170.34705641395,
+      "relative_error": -0.068567563778301,
+      "additive_relative_error": 0.25030341607478307
+    },
+    {
+      "bucket_mb": 256.0,
+      "measured_ms": 141.0296270623803,
+      "independent_runs_ms": [
+        139.88621486350894,
+        141.0296270623803,
+        144.4381638430059
+      ],
+      "min_ms": 139.88621486350894,
+      "max_ms": 144.4381638430059,
+      "predicted_ms": 134.92232838955897,
+      "additive_ms": 168.87120953885096,
+      "relative_error": -0.043305075678318,
+      "additive_relative_error": 0.19741655038310313
+    }
+  ],
+  "mean_absolute_relative_error": 0.07770062275253398,
+  "additive_mean_absolute_relative_error": 0.3359133864169749,
+  "selected_bucket_mb": 64.0,
+  "measured_best_bucket_mb": 1.0,
+  "selection_gap": 0.0319780146702755,
+  "speedup_over_default": 0.9946670824119495
+}

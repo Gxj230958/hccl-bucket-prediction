@@ -1,0 +1,89 @@
+{
+  "world_size": 4,
+  "rows": [
+    {
+      "bucket_mb": 2.0,
+      "measured_ms": 135.22432604804635,
+      "independent_runs_ms": [
+        138.16741621121764,
+        135.22432604804635,
+        133.35098093375564
+      ],
+      "min_ms": 133.35098093375564,
+      "max_ms": 138.16741621121764,
+      "predicted_ms": 127.89879245487583,
+      "additive_ms": 180.4463445636405,
+      "relative_error": -0.05417319359068349,
+      "additive_relative_error": 0.33442221408836154
+    },
+    {
+      "bucket_mb": 8.0,
+      "measured_ms": 134.9180582910776,
+      "independent_runs_ms": [
+        133.70602717623115,
+        134.98677778989077,
+        134.9180582910776
+      ],
+      "min_ms": 133.70602717623115,
+      "max_ms": 134.98677778989077,
+      "predicted_ms": 126.3212971541725,
+      "additive_ms": 163.2796623050599,
+      "relative_error": -0.06371838763316709,
+      "additive_relative_error": 0.21021355015941476
+    },
+    {
+      "bucket_mb": 25.0,
+      "measured_ms": 134.088518563658,
+      "independent_runs_ms": [
+        134.19972080737352,
+        134.088518563658,
+        132.6990583911538
+      ],
+      "min_ms": 132.6990583911538,
+      "max_ms": 134.19972080737352,
+      "predicted_ms": 126.73357069173471,
+      "additive_ms": 154.56866926370336,
+      "relative_error": -0.054851436578677346,
+      "additive_relative_error": 0.1527360501810786
+    },
+    {
+      "bucket_mb": 32.0,
+      "measured_ms": 133.79571866244078,
+      "independent_runs_ms": [
+        133.07052571326494,
+        134.74120711907744,
+        133.79571866244078
+      ],
+      "min_ms": 133.07052571326494,
+      "max_ms": 134.74120711907744,
+      "predicted_ms": 126.73357069173471,
+      "additive_ms": 153.974162682079,
+      "relative_error": -0.05278306392242247,
+      "additive_relative_error": 0.1508153192147151
+    },
+    {
+      "bucket_mb": 128.0,
+      "measured_ms": 135.62136003747582,
+      "independent_runs_ms": [
+        133.8949897326529,
+        135.62136003747582,
+        138.24145076796412
+      ],
+      "min_ms": 133.8949897326529,
+      "max_ms": 138.24145076796412,
+      "predicted_ms": 128.3825474376972,
+      "additive_ms": 156.04619466437362,
+      "relative_error": -0.053375165960423444,
+      "additive_relative_error": 0.15060190091924947
+    }
+  ],
+  "prediction": "results/four_rank/prediction_none.json",
+  "cost_field": "device_ms",
+  "condition": "none",
+  "mean_absolute_relative_error": 0.05578024953707477,
+  "additive_mean_absolute_relative_error": 0.1997578069125639,
+  "selected_bucket_mb": 8.0,
+  "measured_best_bucket_mb": 32.0,
+  "selection_gap": 0.00838845696900381,
+  "speedup_over_default": 0.9938515293065519
+}

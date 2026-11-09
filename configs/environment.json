@@ -1,0 +1,28 @@
+{
+  "python": "3.11.14",
+  "packages": {
+    "torch": "2.9.0+cpu",
+    "torch-npu": "2.9.0.post1+gitdc51c2d",
+    "transformers": "4.57.6",
+    "matplotlib": "3.11.2"
+  },
+  "cann": "8.5.1",
+  "device": "Ascend 910B2C, 64 GiB",
+  "four_rank_cards": [
+    12,
+    13,
+    14,
+    15
+  ],
+  "eight_rank_cards": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "interconnect": "Single HCCS group"
+}

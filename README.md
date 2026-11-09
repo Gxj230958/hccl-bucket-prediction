@@ -1,0 +1,104 @@
+# Execution-Graph Prediction and DDP Bucket Selection for HCCL Training
+
+## Overview
+
+This project predicts distributed-data-parallel (DDP) training step time from a measured
+execution dependency graph — per-parameter gradient-readiness events on each rank plus
+cross-rank collective dependencies — and uses the same graph to select the DDP
+communication bucket size automatically. The workload is the complete Qwen3-0.6B
+architecture (28 transformer layers, 596,049,920 trainable parameters, BF16, AdamW),
+validated on 2, 4 and 8 Ascend 910B2C NPUs over HCCL.
+
+Key findings, with all numbers measured on device:
+
+- **Measured readiness graphs.** Post-accumulation hooks record each parameter's
+  gradient-ready time with NPU events; a communication hook records actual DDP bucket
+  membership while delegating reduction and averaging to PyTorch's standard DDP hook.
+  The predicted and actual steady-state bucket layouts match in all 1,296 evaluated
+  rank-steps (order, parameter membership and byte size).
+- **Communication cost table.** Standalone HCCL microbenchmarks cover eleven message
+  sizes from 4 KiB to 512 MiB, measured both idle and while 32 BF16 4096×4096 matrix
+  multiplications are queued on another NPU stream (Cube-contended condition).
+- **Critical-path prediction.** The graph predicts held-out step times with MAPE of
+  7.77% (2 NPUs), 5.74% (4 NPUs) and 4.23% (8 NPUs), versus 33.59%, 19.97% and 22.65%
+  for an additive compute-plus-communication baseline, across 16 held-out
+  rank-count/bucket configurations with 48 independent runs (3 runs each).
+- **Automatic bucket sizing.** The predicted argmin stays within 0.84–3.29% of the
+  measured best configuration, but is 0.54–2.82% slower than the PyTorch default
+  25 MiB cap — accurate absolute timing does not by itself guarantee close candidate
+  rankings, and no throughput improvement over the default is established.
+- **Hardware trace validation.** Ascend profiler traces confirm actual compute/all-reduce
+  overlap (114.19 and 140.45 ms of overlap versus 140.05 and 167.55 ms of all-reduce
+  without compute in two 33K-operator two-rank trace windows).
+
+| NPUs | Graph MAPE | Additive MAPE | Selected / best (MiB) | Slower than best | Slower than default |
+|---:|---:|---:|---:|---:|---:|
+| 2 | 7.77% | 33.59% | 64 / 1 | 3.20% | 0.54% |
+| 4 | 5.74% | 19.97% | 8 / 32 | 0.84% | 0.62% |
+| 8 | 4.23% | 22.65% | 8 / 32 | 3.29% | 2.82% |
+
+**Hardware.** All measurements ran on Ascend 910B2C NPUs (64 GiB each) communicating over
+HCCL within one HCCS group on a single host (PyTorch 2.9.0, torch-npu 2.9.0.post1,
+CANN 8.5.1). The method — readiness events, a measured collective cost table and
+critical-path analysis — is portable to other communication backends.
+
+## Links
+
+- [Technical report](REPORT.md) — full protocol, held-out results for every candidate,
+  concurrent-cost ablation, communication critical paths and limitations.
+  [中文讲解](中文讲解.md) explains the result in Chinese.
+- Reference work: [CrystalLLM](https://minlanyu.seas.harvard.edu/writeup/sosp26.pdf) —
+  captures computation, communication and dependencies through context-switched
+  execution and combines real ranks with virtual replay; this project studies
+  dependency-based prediction and bucket selection using actual ranks on one host.
+
+## Repository contents
+
+- `collect.py` — BF16 forward/backward/AdamW training with parameter-ready NPU events,
+  actual DDP bucket membership capture, hardware trace profiling and HCCL
+  microbenchmarks (idle and Cube-contended conditions).
+- `predict.py` — builds the cross-rank dependency graph from calibration traces,
+  computes the critical path for each candidate bucket cap and selects the argmin.
+- `analyze_trace.py` — extracts Ascend operator streams, explicit profiler flows and
+  measured compute/communication overlap intervals.
+- `evaluate.py`, `plot.py`, `summarize.py` — independent-run statistics, exported
+  figures, bucket-layout verification and critical-path summaries.
+- `test_predict.py` — four CPU unit tests for the predictor (joins, overlap,
+  slowest-rank dependencies, rank aggregation, separate cost conditions).
+- `run_two_rank.sh`, `run_scaled.sh` — calibration, frozen prediction and held-out
+  candidate evaluation; `scripts/run_npu.sh` sources the local CANN environment and
+  verifies the selected cards are healthy and idle before every NPU process.
+- `configs/` — Qwen3-0.6B architecture configuration, its public provenance and the
+  exact measured runtime environment.
+- `data/` — tokenized public SQuAD calibration and evaluation partitions
+  (88,903 and 115,434 tokens; disjoint documents).
+- `results/` — combined summary (`summary.json`, exported PNG/PDF figures), per-protocol
+  frozen predictions with full per-node graphs, three independent run records for every
+  candidate, evaluation statistics and the profiler-derived `trace_summary.json`.
+  Large raw profiler exports and smoke-test dumps are not committed; they are
+  regenerated by the reproduction scripts.
+
+## Reproduction
+
+Requires Ascend NPUs with CANN 8.5.1 installed at `/usr/local/Ascend` (adjust
+`scripts/run_npu.sh` otherwise), PyTorch 2.9.0 with torch-npu, and transformers 4.57.6.
+No model-weight download is required — parameters are initialized from recorded seeds.
+
+```bash
+python -m venv --system-site-packages .venv
+.venv/bin/python -m pip install matplotlib==3.11.2
+.venv/bin/python -m unittest test_predict.py
+bash run_two_rank.sh results/reproduce_two_rank
+.venv/bin/python evaluate.py results/reproduce_two_rank
+bash run_scaled.sh 12,13,14,15 results/reproduce_four_rank
+bash run_scaled.sh 8,9,10,11,12,13,14,15 results/reproduce_eight_rank
+.venv/bin/python summarize.py results/reproduce_two_rank results/reproduce_four_rank results/reproduce_eight_rank --output results/reproduce_summary.json
+```
+
+Run each protocol in an exclusive measurement window with a fresh output directory, and
+substitute card IDs healthy-and-idle on your host (four- and eight-rank runs must stay
+within one HCCS group). Each run performs calibration with one 2048 MiB bucket, freezes
+the prediction and selected cap, then evaluates every held-out candidate with three
+independent runs of two warmup plus six measured steps. The CPU unit tests pass without
+NPU access; the committed `results/` combined with `evaluate.py` and `summarize.py`
+allows re-deriving every reported table and figure offline.

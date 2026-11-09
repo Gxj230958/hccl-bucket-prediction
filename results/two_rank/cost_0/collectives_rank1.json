@@ -1,0 +1,266 @@
+[
+  {
+    "bytes": 4096,
+    "repeat": 0,
+    "ms": 0.2299649640917778,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 4096,
+    "repeat": 1,
+    "ms": 0.11648144572973251,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 4096,
+    "repeat": 2,
+    "ms": 0.09292736649513245,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 16384,
+    "repeat": 0,
+    "ms": 0.09922217577695847,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 16384,
+    "repeat": 1,
+    "ms": 0.09891483932733536,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 16384,
+    "repeat": 2,
+    "ms": 0.09781681001186371,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 65536,
+    "repeat": 0,
+    "ms": 0.10030250996351242,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 65536,
+    "repeat": 1,
+    "ms": 0.09795743972063065,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 65536,
+    "repeat": 2,
+    "ms": 0.09518396109342575,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 262144,
+    "repeat": 0,
+    "ms": 0.1231534406542778,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 262144,
+    "repeat": 1,
+    "ms": 0.14167651534080505,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 262144,
+    "repeat": 2,
+    "ms": 0.1255897805094719,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 1048576,
+    "repeat": 0,
+    "ms": 0.1801447942852974,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 1048576,
+    "repeat": 1,
+    "ms": 0.18510408699512482,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 1048576,
+    "repeat": 2,
+    "ms": 0.17151609063148499,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 4194304,
+    "repeat": 0,
+    "ms": 0.33916160464286804,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 4194304,
+    "repeat": 1,
+    "ms": 0.34196674823760986,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 4194304,
+    "repeat": 2,
+    "ms": 0.34250877797603607,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 16777216,
+    "repeat": 0,
+    "ms": 1.0227635502815247,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 16777216,
+    "repeat": 1,
+    "ms": 1.017378643155098,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 16777216,
+    "repeat": 2,
+    "ms": 1.021157018840313,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 67108864,
+    "repeat": 0,
+    "ms": 3.7312088534235954,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 67108864,
+    "repeat": 1,
+    "ms": 3.73854860663414,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 67108864,
+    "repeat": 2,
+    "ms": 3.734600730240345,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 134217728,
+    "repeat": 0,
+    "ms": 7.3397839441895485,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 134217728,
+    "repeat": 1,
+    "ms": 7.344053126871586,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 134217728,
+    "repeat": 2,
+    "ms": 7.354743778705597,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 268435456,
+    "repeat": 0,
+    "ms": 14.604533091187477,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 268435456,
+    "repeat": 1,
+    "ms": 14.58633691072464,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 268435456,
+    "repeat": 2,
+    "ms": 14.603054150938988,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 536870912,
+    "repeat": 0,
+    "ms": 29.186180792748928,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 536870912,
+    "repeat": 1,
+    "ms": 29.115891084074974,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  },
+  {
+    "bytes": 536870912,
+    "repeat": 2,
+    "ms": 29.275452718138695,
+    "world_size": 2,
+    "rank": 1,
+    "dtype": "bfloat16"
+  }
+]
